@@ -3,6 +3,8 @@ import { CgMouse } from "react-icons/cg";
 import "./Home.css";
 import Product from "./Product.js";
 import MetaData from "../layout/MetaData";
+import { getProduct } from "../../actions/productAction";
+import { useSelector, useDispatch } from "react-redux";
 
 const product = {
   name: "Blue Tshirt",
@@ -14,6 +16,12 @@ const product = {
 };
 
 const Home = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProduct());
+  }, [dispatch]);
+
   return (
     <Fragment>
       <MetaData title="ECOMMERCE" />
